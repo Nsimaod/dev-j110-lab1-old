@@ -7,21 +7,28 @@ public class Country {
     private String capitalName;
     private double capitalPopulation;
 
-    public Country(String name, double square, double population, String capitalName, double capitalPopulation)
+    public Country(String name, double square, double population)
     {
+        if(name==null || name=="" || square<=0 || population<=0)
+        {
+            throw new IllegalArgumentException();
+        }
         this.name = name;
         this.square = square;
         this.population = population;
+    }
+
+    public Country(String name, double square, double population, String capitalName, double capitalPopulation)
+    {
+        this(name, square, population);
+        if(capitalName==null || capitalName=="" || capitalPopulation<=0)
+        {
+            throw new IllegalArgumentException();
+        }
         this.capitalName = capitalName;
         this.capitalPopulation = capitalPopulation;
     }
 
-    public Country(String name, double square, double population)
-    {
-        this.name = name;
-        this.square = square;
-        this.population = population;
-    }
 
     public Country(String name, double square, String capitalName)
     {
